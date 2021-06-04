@@ -6,27 +6,25 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 
 import Account from './Account';
 
-@Entity('catalog_rewards')
-class CatalogReward {
+@Entity('positions')
+class Position {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   account_id: string;
 
-  @ManyToOne(() => Account, { eager: true })
+  @ManyToOne(() => Account, { eager: false })
   @JoinColumn({ name: 'account_id' })
   account: Account;
 
   @Column()
-  title: string;
-
-  @Column()
-  image_url: string;
+  position_name: string;
 
   @Column()
   points: number;
@@ -36,6 +34,9 @@ class CatalogReward {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 }
 
-export default CatalogReward;
+export default Position;

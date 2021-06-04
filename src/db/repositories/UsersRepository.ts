@@ -10,6 +10,8 @@ interface ICreateUserDTO {
   is_admin?: boolean;
   avatar: string;
   recognition_points: number;
+  position_id?: string;
+  department_id?: string;
 }
 
 class UsersRepository {
